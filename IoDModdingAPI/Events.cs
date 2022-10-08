@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IoDModdingAPI
+﻿namespace IoDModdingAPI
 {
     public static class Events
     {
-        /// <summary>
-        /// Called after
-        /// </summary>
-        public readonly static Event OnApplicationLateStart = new(true);
+        public readonly static Event OnApplicationStart = new(true);
     }
 }
