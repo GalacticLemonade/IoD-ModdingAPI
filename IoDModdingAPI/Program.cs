@@ -21,7 +21,7 @@ namespace IoDModdingAPI
                 if (processes.Length == 0)
                 {
                     Console.WriteLine("Program stopped, stopping API");
-                    System.Threading.Thread.Sleep(5000);
+                    System.Threading.Thread.Sleep(3000);
                     Environment.Exit(0);
                 }else
                 {
@@ -29,6 +29,13 @@ namespace IoDModdingAPI
                 }
             }
         }
+
+        static void Awake()
+        {
+            System.Threading.Thread.Sleep(1000);
+            Awake();
+        }
+
         static void Main()
         {
             Console.Title = "IoD Modding API";
@@ -78,7 +85,8 @@ namespace IoDModdingAPI
                 Console.WriteLine("Program failed to start: "+Exception.ToString());
             }
 
-            System.Threading.Thread.Sleep(500000000);
+            //System.Threading.Thread.Sleep(500000000);
+            Awake();
         }
     }
 }
