@@ -22,7 +22,7 @@ namespace IoDModdingAPI
 
             string foundDir = lines[1].Substring(44, 73);
 
-            string installedDirectory = foundDir + "Instruments_Data/ModAPIInstalled.txt";
+            string installedDirectory = foundDir + "Instruments_Data/ModAPIInstalled.api";
 
             string finalDir = foundDir + "Instruments.exe";
 
@@ -38,21 +38,29 @@ namespace IoDModdingAPI
                     using (FileStream fs = File.Create(installedDirectory))
                     {
 
-                        Byte[] text = new UTF8Encoding(true).GetBytes("this is a value for if it's installed or not DO NOT DELETE THIS!!");
+                        Byte[] text = new UTF8Encoding(true).GetBytes("DO NOT DELETE THIS!!");
                         fs.Write(text, 0, text.Length);
                         Console.WriteLine("Created and installed!");
                     }
                 }
             }
-            catch (Exception Ex)
+            catch (Exception Exception)
             {
-                Console.WriteLine(Ex.ToString());
+                Console.WriteLine(Exception.ToString());
             }
 
             Console.WriteLine("Starting application...");
 
-            Process.Start(finalDir);
-            System.Threading.Thread.Sleep(5000);
+            try
+            {
+                Process.Start(finalDir);
+            }
+            catch (Exception Exception)
+            {
+                Console.WriteLine(Exception.ToString());
+            }
+
+            System.Threading.Thread.Sleep(500000000);
         }
     }
 }
