@@ -13,6 +13,22 @@ namespace IoDModdingAPI
         static string LogPathWithEnv = @"%USERPROFILE%\AppData\LocalLow\Radiangames\Instruments\Player.log";
         static string RealFilePath = Environment.ExpandEnvironmentVariables(LogPathWithEnv);
 
+        static void StartProgramLoop()
+        {
+            while (true)
+            {
+                Process[] processes = Process.GetProcessesByName("instruments");
+                if (processes.Length == 0)
+                {
+                    Console.WriteLine("Program stopped, stopping API...");
+                    System.Threading.Thread.Sleep(5000);
+                    Environment.Exit(0);
+                }else
+                {
+
+                }
+            }
+        }
         static void Main()
         {
             Console.Title = "IoD Modding API";
@@ -54,10 +70,12 @@ namespace IoDModdingAPI
             try
             {
                 Process.Start(finalDir);
+                Console.WriteLine("Game started!");
+                StartProgramLoop();
             }
             catch (Exception Exception)
             {
-                Console.WriteLine(Exception.ToString());
+                Console.WriteLine("Program failed to start: "+Exception.ToString());
             }
 
             System.Threading.Thread.Sleep(500000000);
