@@ -20,7 +20,7 @@ namespace IoDModdingAPI
                 Process[] processes = Process.GetProcessesByName("instruments");
                 if (processes.Length == 0)
                 {
-                    Console.WriteLine("Program stopped, stopping API...");
+                    Console.WriteLine("Program stopped, stopping API");
                     System.Threading.Thread.Sleep(5000);
                     Environment.Exit(0);
                 }else
