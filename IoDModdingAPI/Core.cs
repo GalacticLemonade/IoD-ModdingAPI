@@ -8,7 +8,7 @@ using System.IO;
 
 namespace IoDModdingAPI
 {
-    class Program
+    class Core
     {
         static string LogPathWithEnv = @"%USERPROFILE%\AppData\LocalLow\Radiangames\Instruments\Player.log";
         static string RealFilePath = Environment.ExpandEnvironmentVariables(LogPathWithEnv);
