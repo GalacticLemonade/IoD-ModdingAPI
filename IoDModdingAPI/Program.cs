@@ -38,7 +38,7 @@ namespace IoDModdingAPI
                     using (FileStream fs = File.Create(installedDirectory))
                     {
 
-                        Byte[] text = new UTF8Encoding(true).GetBytes("this is a value for if it's installed or not");
+                        Byte[] text = new UTF8Encoding(true).GetBytes("this is a value for if it's installed or not DO NOT DELETE THIS!!");
                         fs.Write(text, 0, text.Length);
                         Console.WriteLine("Created and installed!");
                     }
