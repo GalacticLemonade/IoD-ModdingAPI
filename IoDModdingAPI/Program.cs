@@ -22,7 +22,7 @@ namespace IoDModdingAPI
 
             string foundDir = lines[1].Substring(44, 73);
 
-            string installedDirectory = foundDir + "Instruments_Data/ModAPIInstalled.api";
+            string installedDirectory = foundDir + "Instruments_Data/ModAPIInstalled";
 
             string finalDir = foundDir + "Instruments.exe";
 
