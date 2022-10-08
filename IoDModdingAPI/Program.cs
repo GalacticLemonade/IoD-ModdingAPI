@@ -54,7 +54,7 @@ namespace IoDModdingAPI
             {
                 if (File.Exists(installedDirectory))
                 {
-                    Console.WriteLine("API installed!");
+                    Console.WriteLine("API located!");
                 }
                 else
                 {
