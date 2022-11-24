@@ -82,7 +82,6 @@ namespace IoDModdingAPI
                 Console.WriteLine("Program failed to start: "+Exception.ToString());
             }
 
-            //System.Threading.Thread.Sleep(500000000);
             Awake();
         }
     }
