@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Pipes;
 
 namespace IoDModdingAPI
 {
@@ -42,7 +43,9 @@ namespace IoDModdingAPI
 
             string foundDir = lines[1].Substring(44, 73);
 
-            string installedDirectory = foundDir + "Instruments_Data/ModAPIInstalled";
+            string installedDirectory = foundDir + "Instruments_Data/API/";
+
+            string installedFile = installedDirectory + "Installed";
 
             string finalDir = foundDir + "Instruments.exe";
 
@@ -55,7 +58,7 @@ namespace IoDModdingAPI
                 }
                 else
                 {
-                    using (FileStream fs = File.Create(installedDirectory))
+                    using (FileStream fs = File.Create(installedFile))
                     {
 
                         Byte[] text = new UTF8Encoding(true).GetBytes("DO NOT DELETE THIS!!");
