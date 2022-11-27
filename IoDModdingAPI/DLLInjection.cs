@@ -44,15 +44,14 @@ public class DLLInjection
     const uint MEM_RESERVE = 0x00002000;
     const uint PAGE_READWRITE = 4;
 
-    public static int SendCommand()
+    public static void SendCommand()
     {
-        using (NamedPipeServerStream namedPipeServer = new NamedPipeServerStream("PipeMain"))
+        NamedPipeClientStream pipe = new NamedPipeClientStream(".", "HyperPipe", PipeDirection.InOut);
+        pipe.Connect();
+        using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
         {
-            namedPipeServer.WaitForConnection();
-            namedPipeServer.WriteByte(1);
-            int byteFromClient = namedPipeServer.ReadByte();
-            return byteFromClient;
-          }
+            Console.WriteLine(rdr.ReadToEnd());
+        }
     }
 
     public static int Inject()

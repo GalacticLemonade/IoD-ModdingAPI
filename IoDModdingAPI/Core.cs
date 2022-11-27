@@ -83,12 +83,11 @@ namespace IoDModdingAPI
                 Console.WriteLine("Attempting to inject...");
                 try
                 {
-                    using (NamedPipeServerStream namedPipeServer = new NamedPipeServerStream("PipeMain"))
+                    NamedPipeClientStream pipe = new NamedPipeClientStream(".", "HyperPipe", PipeDirection.InOut);
+                    pipe.Connect();
+                    using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
                     {
-                        namedPipeServer.WaitForConnection();
-                        namedPipeServer.WriteByte(1);
-                        int byteFromClient = namedPipeServer.ReadByte();
-                        Console.WriteLine(byteFromClient);
+                        Console.WriteLine(rdr.ReadToEnd());
                     }
                 }
                 catch (Exception Exception)
