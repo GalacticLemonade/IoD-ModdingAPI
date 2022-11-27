@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.IO;
 
 namespace IoDModdingAPI
 {
@@ -24,18 +25,6 @@ namespace IoDModdingAPI
                     Environment.Exit(0);
                 }
             }
-        }
-
-        static void Pipe(string[] args)
-        {
-            NamedPipeClientStream pipe = new NamedPipeClientStream(".", "Pipe", PipeDirection.InOut);
-            pipe.Connect();
-            using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
-            {
-                System.Console.WriteLine(rdr.ReadToEnd());
-            }
-
-            Console.ReadKey();
         }
 
         static void Awake()
