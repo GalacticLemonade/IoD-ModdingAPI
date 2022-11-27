@@ -28,6 +28,18 @@ namespace IoDModdingAPI
             }
         }
 
+        static void Pipe(string[] args)
+        {
+            NamedPipeClientStream pipe = new NamedPipeClientStream(".", "Pipe", PipeDirection.InOut);
+            pipe.Connect();
+            using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
+            {
+                System.Console.WriteLine(rdr.ReadToEnd());
+            }
+
+            Console.ReadKey();
+        }
+
         static void Awake()
         {
             System.Threading.Thread.Sleep(1000);
@@ -85,7 +97,6 @@ namespace IoDModdingAPI
                 Console.WriteLine("Program failed to start: "+Exception.ToString());
             }
 
-            //System.Threading.Thread.Sleep(500000000);
             Awake();
         }
     }
