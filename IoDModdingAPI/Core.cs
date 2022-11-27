@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using System.IO;
-using System.IO.Pipes;
 
 namespace IoDModdingAPI
 {
@@ -79,6 +77,9 @@ namespace IoDModdingAPI
                 Process.Start(finalDir);
                 Console.WriteLine("Game started!");
                 StartProgramLoop();
+                System.Threading.Thread.Sleep(5000);
+                Console.WriteLine("Attempting to inject...");
+                
             }
             catch (Exception Exception)
             {
