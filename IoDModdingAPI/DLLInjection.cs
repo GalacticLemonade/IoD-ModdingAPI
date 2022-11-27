@@ -55,14 +55,6 @@ public class DLLInjection
           }
     }
 
-    // Client
-    //using (NamedPipeClientStream namedPipeClient = new NamedPipeClientStream("PipeMain"))
-    //{
-    //namedPipeClient.Connect();
-    //Console.WriteLine(namedPipeClient.ReadByte());
-    //namedPipeClient.WriteByte(2);
-    //}
-
     public static int Inject()
     {
         Process targetProcess = Process.GetProcessesByName("instruments")[0];

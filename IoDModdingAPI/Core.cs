@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Pipes;
 
 namespace IoDModdingAPI
 {
@@ -82,7 +83,13 @@ namespace IoDModdingAPI
                 Console.WriteLine("Attempting to inject...");
                 try
                 {
-
+                    using (NamedPipeServerStream namedPipeServer = new NamedPipeServerStream("PipeMain"))
+                    {
+                        namedPipeServer.WaitForConnection();
+                        namedPipeServer.WriteByte(1);
+                        int byteFromClient = namedPipeServer.ReadByte();
+                        Console.WriteLine(byteFromClient);
+                    }
                 }
                 catch (Exception Exception)
                 {
