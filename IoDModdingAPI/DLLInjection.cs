@@ -1,3 +1,6 @@
+// TODO:
+// Figure out how to reference this script from the other one because I'm too dumb to figure it out
+
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -41,13 +44,14 @@ public class DLLInjection
     const uint MEM_RESERVE = 0x00002000;
     const uint PAGE_READWRITE = 4;
     
-    public static void SendCommand()
+    public static int SendCommand()
     {
       using (NamedPipeServerStream namedPipeServer = new NamedPipeServerStream("PipeMain"))
         {
           namedPipeServer.WaitForConnection();
 		      namedPipeServer.WriteByte(1);
 		      int byteFromClient = namedPipeServer.ReadByte();
+	  return byteFromClient
         }
     }
     
