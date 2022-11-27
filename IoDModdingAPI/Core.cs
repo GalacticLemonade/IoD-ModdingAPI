@@ -80,6 +80,14 @@ namespace IoDModdingAPI
                 StartProgramLoop();
                 System.Threading.Thread.Sleep(5000);
                 Console.WriteLine("Attempting to inject...");
+                try
+                {
+
+                }
+                catch (Exception Exception)
+                {
+                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + "Please contact GalacticLemonade#7367 on discord with this same error message.");
+                }
                 
             }
             catch (Exception Exception)
