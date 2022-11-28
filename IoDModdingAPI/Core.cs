@@ -45,7 +45,8 @@ namespace IoDModdingAPI
 
             string installedDirectory = foundDir + "Instruments_Data/Modding_API/";
 
-            string installedFile = installedDirectory + "Installed";
+            string installedFile = installedDirectory + "IsInstalled";
+            string modFolder = foundDir + "Mods/";
 
             string finalDir = foundDir + "Instruments.exe";
 
@@ -58,12 +59,16 @@ namespace IoDModdingAPI
                 }
                 else
                 {
+                    Console.WriteLine("Creating required directories...");
+                    
+                    Directory.CreateDirectory(Path.GetDirectoryName(modFolder));
+                    
                     using (FileStream fs = File.Create(installedFile))
                     {
 
                         Byte[] text = new UTF8Encoding(true).GetBytes("hi there");
                         fs.Write(text, 0, text.Length);
-                        Console.WriteLine("Created and installed!");
+                        
                     }
                 }
             }
@@ -83,16 +88,17 @@ namespace IoDModdingAPI
                 Console.WriteLine("Attempting to inject...");
                 try
                 {
-                    NamedPipeClientStream pipe = new NamedPipeClientStream(".", "HyperPipe", PipeDirection.InOut);
+                    NamedPipeClientStream pipe = new NamedPipeClientStream(".", "ModPipe", PipeDirection.InOut);
                     pipe.Connect();
                     using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
                     {
                         Console.WriteLine(rdr.ReadToEnd());
                     }
+                    
                 }
                 catch (Exception Exception)
                 {
-                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this same error message. (ERROR=200)");
+                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this entire message. (ERROR=200)");
                 }
                 
             }
