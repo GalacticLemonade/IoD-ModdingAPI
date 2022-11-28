@@ -43,7 +43,7 @@ namespace IoDModdingAPI
 
             string foundDir = lines[1].Substring(44, 73);
 
-            string installedDirectory = foundDir + "Instruments_Data/API/";
+            string installedDirectory = foundDir + "Instruments_Data/Modding_API/";
 
             string installedFile = installedDirectory + "Installed";
 
@@ -61,7 +61,7 @@ namespace IoDModdingAPI
                     using (FileStream fs = File.Create(installedFile))
                     {
 
-                        Byte[] text = new UTF8Encoding(true).GetBytes("DO NOT DELETE THIS!!");
+                        Byte[] text = new UTF8Encoding(true).GetBytes("hi there");
                         fs.Write(text, 0, text.Length);
                         Console.WriteLine("Created and installed!");
                     }
@@ -92,7 +92,7 @@ namespace IoDModdingAPI
                 }
                 catch (Exception Exception)
                 {
-                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + "Please contact GalacticLemonade#7367 on discord with this same error message.");
+                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this same error message. (ERROR=200)");
                 }
                 
             }
