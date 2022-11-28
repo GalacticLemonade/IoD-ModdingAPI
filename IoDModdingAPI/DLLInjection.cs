@@ -1,5 +1,5 @@
-﻿// TODO:
-// Figure out how to reference this script from the other one because I'm too dumb to figure it out
+// TODO:
+// Put this script into a ClassLibrary to be able to build it into a DLL to reference from Core.cs
 
 using System;
 using System.Diagnostics;
@@ -46,7 +46,7 @@ public class DLLInjection
 
     public static void SendCommand()
     {
-        NamedPipeClientStream pipe = new NamedPipeClientStream(".", "HyperPipe", PipeDirection.InOut);
+        NamedPipeClientStream pipe = new NamedPipeClientStream(".", "ModPipe", PipeDirection.InOut);
         pipe.Connect();
         using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
         {
