@@ -7,12 +7,13 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 
+
 namespace IoDModdingAPI
 {
     class Core
     {
-        static string LogPathWithEnv = @"%USERPROFILE%\AppData\LocalLow\Radiangames\Instruments\Player.log";
-        static string RealFilePath = Environment.ExpandEnvironmentVariables(LogPathWithEnv);
+        static string LogPathWithEnv = @"%USERPROFILE%\AppData\LocalLow\Radiangames\Instruments\Player.log"; // Get Player.log path
+        static string RealFilePath = Environment.ExpandEnvironmentVariables(LogPathWithEnv); // Expand env variables
 
         static void StartProgramLoop()
         {
@@ -21,6 +22,7 @@ namespace IoDModdingAPI
                 Process[] processes = Process.GetProcessesByName("instruments");
                 if (processes.Length == 0)
                 {
+                    // If game is not open, close API
                     Console.WriteLine("Game stopped, stopping API");
                     System.Threading.Thread.Sleep(3000);
                     Environment.Exit(0);
@@ -30,6 +32,7 @@ namespace IoDModdingAPI
 
         static void Awake()
         {
+            // Keep the console application running.
             System.Threading.Thread.Sleep(1000);
             Awake();
         }
@@ -41,7 +44,7 @@ namespace IoDModdingAPI
 
             string[] lines = System.IO.File.ReadAllLines(RealFilePath);
 
-            string foundDir = lines[1].Substring(44, 73);
+            string foundDir = lines[1].Substring(44, 73); // Get game directory
 
             string installedDirectory = foundDir + "Instruments_Data/Modding_API/";
 
@@ -55,18 +58,18 @@ namespace IoDModdingAPI
             {
                 if (File.Exists(installedDirectory))
                 {
-                    Console.WriteLine("API located!");
+                    Console.WriteLine("API located!"); // API was already found, continue
                 }
                 else
                 {
                     Console.WriteLine("Creating required directories...");
                     
-                    Directory.CreateDirectory(Path.GetDirectoryName(modFolder));
+                    Directory.CreateDirectory(Path.GetDirectoryName(modFolder)); // Create modFolder dir
                     
                     using (FileStream fs = File.Create(installedFile))
                     {
 
-                        Byte[] text = new UTF8Encoding(true).GetBytes("hi there");
+                        Byte[] text = new UTF8Encoding(true).GetBytes("hi there"); // Create installed flag
                         fs.Write(text, 0, text.Length);
                         
                     }
