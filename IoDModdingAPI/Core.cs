@@ -94,7 +94,7 @@ namespace IoDModdingAPI
                 }
                 catch (Exception Exception)
                 {
-                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this message, or open an issue on github, GalaacticLemonade/IoD-ModdingAPI");
+                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this message, or open an issue on github, at GalacticLemonade/IoD-ModdingAPI");
                 }
                 
             }
