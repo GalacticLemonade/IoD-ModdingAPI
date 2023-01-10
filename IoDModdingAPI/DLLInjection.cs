@@ -44,14 +44,9 @@ public class DLLInjection
     const uint MEM_RESERVE = 0x00002000;
     const uint PAGE_READWRITE = 4;
 
-    public static void SendCommand()
+    public static void PipeCommand(String arg1, String arg2, String arg3, String arg1Type, String arg2Type, String arg3Type)
     {
-        NamedPipeClientStream pipe = new NamedPipeClientStream(".", "ModPipe", PipeDirection.InOut);
-        pipe.Connect();
-        using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
-        {
-            Console.WriteLine(rdr.ReadToEnd());
-        }
+        
     }
 
     public static int Inject()
@@ -65,7 +60,7 @@ public class DLLInjection
         IntPtr loadLibraryAddr = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
 
         // name of the dll we want to inject
-        string dllName = "exploit-main.dll";
+        string dllName = "main.dll";
 
         // alocating some memory on the target process - enough to store the name of the dll
         // and storing its address in a pointer
