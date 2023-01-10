@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Pipes;
 
 
 namespace IoDModdingAPI
@@ -91,17 +90,11 @@ namespace IoDModdingAPI
                 Console.WriteLine("Attempting to inject...");
                 try
                 {
-                    NamedPipeClientStream pipe = new NamedPipeClientStream(".", "ModPipe", PipeDirection.InOut);
-                    pipe.Connect();
-                    using (StreamReader rdr = new StreamReader(pipe, Encoding.Unicode))
-                    {
-                        Console.WriteLine(rdr.ReadToEnd());
-                    }
                     
                 }
                 catch (Exception Exception)
                 {
-                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this entire message. (ERROR=200)");
+                    Console.WriteLine("DLL Failed to inject: " + Exception.ToString() + " Please contact GalacticLemonade#7367 on discord with this message, or open an issue on github, GalaacticLemonade/IoD-ModdingAPI");
                 }
                 
             }
